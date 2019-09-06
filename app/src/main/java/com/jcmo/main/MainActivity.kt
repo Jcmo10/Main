@@ -133,6 +133,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }*/
     }
 
+
+    ////Navigation Drawer
    override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
        var datosRecibidos = intent.extras
@@ -167,4 +169,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    ////Navigation Drawer
 }

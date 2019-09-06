@@ -11,27 +11,30 @@
 
     <!--Your comment android:background="@color/lightseagreen"-->
 
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/simplecow"
-
-               android:layout_marginTop="76dp"
-               app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-               android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.496" android:id="@+id/imageView"/>
-
-    <TextView
-            android:id="@+id/fullscreen_content"
+    <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:keepScreenOn="true"
-            android:text="@string/loader_text"
-            android:textColor="#000"
-            android:textSize="25sp" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="20dp"
-            app:layout_constraintHorizontal_bias="0.498"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/simplecow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.44" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <item name="greenca" type="color">#369403</item>
+    <item name="rojoss" type="color">#FF097F</item>
+    <item name="balnca" type="color">#FDFDFE</item>
     <item name="black" type="color">#000000</item>
     <item name="navy" type="color">	#000080</item>
     <item name="darkblue" type="color">#00008b</item>
