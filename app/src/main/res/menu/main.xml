@@ -6,4 +6,5 @@
           android:icon="@drawable/logout_icon2"
           android:orderInCategory="100"
           app:showAsAction="always"/>
+
 </menu>
