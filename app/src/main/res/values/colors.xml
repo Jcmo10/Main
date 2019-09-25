@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#369403</color>
-    <color name="colorPrimaryDark">#686868</color>
+    <color name="colorPrimaryDark">#369403</color>
     <color name="colorAccent">#FF4081</color>
 
     <item name="greenca" type="color">#369403</item>
+    <item name="greena" type="color">#6EC544</item>
+    <item name="redd" type="color">#F73C3C</item>
     <item name="rojoss" type="color">#FF097F</item>
     <item name="balnca" type="color">#FDFDFE</item>
     <item name="black" type="color">#000000</item>

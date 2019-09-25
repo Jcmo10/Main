@@ -15,42 +15,74 @@ import android.view.Menu
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
-//Bottom
-private lateinit var textMessage: TextView
-//Bottom
 
 private var emailM: String? = null
 private var passM: String? = null
+var trabajador : MutableList<Trabajador> = ArrayList()
+var animal : MutableList<Animal> = ArrayList()
+var bool: Boolean = false
 
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    //Bottom
+    private lateinit var textMessage: TextView
 
     //Bottom
+    //Bottom
+
     //private lateinit var textMessage: TextView
     private val onNavigationItemSelectedListenerB = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
 
 
-
+        animal.add(Animal("vaca","123",R.drawable.perfil,"100Kg","5","Macho","AAA","BBB"))
         when (item.itemId) {
             R.id.navigation_home -> {
+                val datosRecibidos = intent.extras
+                //bool = datosRecibidos?.getBoolean("vis")!!
+                emailM = datosRecibidos?.getString("correo").toString()
+                //tinfo.text = "$emailM\nas\ndf"
+                val homeFragment = HomeFragment()
+                val bundle = Bundle()
+                bundle.putString("Emaila", emailM)
+                transaction.replace(R.id.contenedor, homeFragment).commit()
+
                 //textMessage.setText(emailM)
-                textMessage.setText(R.string.title_home)
+                //textMessage.setText(R.string.title_home)
                 //message2.text = textMessage.toString()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
+                val animalesFragment = AnimalesFragment()
+                val bundle = Bundle()
+                bundle.putParcelableArrayList("animal", ArrayList<Animal>(animal))
+                bundle.putBoolean("visi",bool)
+                transaction.replace(R.id.contenedor, animalesFragment).commit()
                 //textMessage.setText(emailM)
-                textMessage.setText(R.string.title_dashboard)
+                //textMessage.setText(R.string.title_dashboard)
                 //message2.text = textMessage.toString()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
+                val produccionFragment = ProduccionFragment()
+                transaction.replace(R.id.contenedor, produccionFragment).commit()
                 //textMessage.setText(emailM)
-                textMessage.setText(R.string.title_notifications)
+                //textMessage.setText(R.string.title_notifications)
+                //message2.text = textMessage.toString()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_eventos -> {
+                val eventosFragment = EventosFragment()
+                transaction.replace(R.id.contenedor, eventosFragment).commit()
+                //textMessage.setText(emailM)
+                //textMessage.text = "asdasd"
                 //message2.text = textMessage.toString()
                 return@OnNavigationItemSelectedListener true
             }
@@ -60,23 +92,41 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
     //Bottom
 
+    //private var trabajador : MutableList<Trabajador> = ArrayList()
+    var trabajadores : MutableList<Trabajador> = ArrayList()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        var datosRecibidos = intent.extras
-        emailM = datosRecibidos?.getString("correo").toString()
-        passM =  datosRecibidos?.getString("pass").toString()
+        trabajador.add(Trabajador("Jose Ramirez","Administrador",R.drawable.perfil))
 
-        message2.text = emailM
+
+        //var boolean = intent
+
+       //val datosRecibidos = intent.extras
+        //bool = datosRecibidos?.getBoolean("vis")!!
+        //emailM = datosRecibidos?.getString("correo").toString()
+        //passM =  datosRecibidos?.getString("pass").toString()
+        //textViewcorreo.text = emailM
+        //message2.text = emailM
         //tvContraseñaM.text = passM
 
         //Inicio BottomNavigation
+
+
         val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
-        textMessage = findViewById(R.id.message2)
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        val agregarFragment = HomeFragment()
+        //textMessage = findViewById(R.id.message2)
+        transaction.replace(R.id.contenedor, agregarFragment).commit()
         navViewB.setOnNavigationItemSelectedListener(onNavigationItemSelectedListenerB)
+
+
         //Fin BottomNavigation
 
 
@@ -94,6 +144,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+        navView.itemIconTintList=null
     }
 
     override fun onBackPressed() {
@@ -140,29 +191,65 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
        var datosRecibidos = intent.extras
        emailM = datosRecibidos?.getString("correo").toString()
        passM =  datosRecibidos?.getString("pass").toString()
+        trabajador.add(Trabajador("Jose Ramirez","Administrador",R.drawable.perfil))
 
+        imageViewperfil.setImageResource(R.drawable.perfil)
+
+        if(emailM != null) {
+            textViewcorreo.text = emailM
+        }
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
       // message2.text = emailM
 
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
-                message2.text = emailM
-                //message2.text = "dashboard"
+                val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
+                navViewB.selectedItemId = R.id.navigation_home
+                val homeFragment = HomeFragment()
+                transaction.replace(R.id.contenedor, homeFragment).commit()
+                //finish()
+                //message2.text = "Home"
             }
             R.id.nav_gallery -> {
-
+                val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
+                navViewB.selectedItemId = R.id.navigation_eventos
+                val eventosFragment = EventosFragment()
+                transaction.replace(R.id.contenedor, eventosFragment).commit()
+                //finish()
+               // message2.text = "Eventos"
             }
             R.id.nav_slideshow -> {
 
+               // val bundle = Bundle()
+                //bundle.putParcelableArrayList("peluchess", ArrayList<Trabajador>(trabajador))
+                intent.putParcelableArrayListExtra("rrr", ArrayList<Trabajador>(trabajador))
+                intent.putExtra("trabajador", ArrayList<Trabajador>(trabajador))
+                intent = Intent(this,TrabajadoresActivity::class.java)
+                startActivity(intent)
+                finish()
+
+                //message2.text = "Trabajdores"
             }
             R.id.nav_tools -> {
-
+                intent = Intent(this,PerfilActivity::class.java)
+                startActivity(intent)
+                finish()
+                //message2.text = "Perfil"
             }
             R.id.nav_share -> {
-
+                intent = Intent(this,ContactarActivity::class.java)
+                startActivity(intent)
+                //finish()
+                //message2.text = "Contactenos"
             }
             R.id.nav_send -> {
-
+                intent = Intent(this,LoginActivity::class.java)
+                intent.putExtra("correo",emailM)
+                intent.putExtra("pass",passM)
+                startActivity(intent)
+                finish()
+               // message2.text = "Enviar"
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

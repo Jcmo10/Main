@@ -82,7 +82,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-            android:text="@string/sign_up"
+            android:text="@string/Register"
             android:layout_width="240dp"
             android:layout_height="50dp"
             android:id="@+id/btnsignup"
