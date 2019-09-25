@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:layout_margin="8dp"
+        tools:context=".AddanimActivity">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:src="@mipmap/perfil"
+            android:id="@+id/ivAnimal"
+            android:layout_marginBottom="8dp"
+            />
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etnomanimal2"
+            app:passwordToggleEnabled="false"
+            >
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nomanimal"
+                android:id="@+id/etnomanimal"
+                android:inputType="textEmailAddress"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etnumanimal2"
+            app:passwordToggleEnabled="false"
+            >
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/numanimal"
+                android:id="@+id/etnumanimal"
+                android:inputType="textEmailAddress"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etpesoanimal2"
+                android:layout_weight="0.5"
+                app:passwordToggleEnabled="false"
+                >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/peso"
+                    android:id="@+id/etpesoanimal"
+                    android:inputType="textEmailAddress"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etedadanimal2"
+                android:layout_weight="0.5"
+                app:passwordToggleEnabled="false"
+                >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edad"
+                    android:id="@+id/etedadanimal"
+                    android:inputType="textEmailAddress"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/rgsexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <RadioButton
+                android:id="@+id/radio_masculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:checked="true"
+                android:text="@string/sexoMacho" />
+
+        <RadioButton
+                android:id="@+id/radio_femenino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/sexoHembra" />
+    </RadioGroup>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etnompadre2"
+            app:passwordToggleEnabled="false"
+            >
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nomPadre"
+                android:id="@+id/etnompadre"
+                android:inputType="textEmailAddress"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etnommadre2"
+            app:passwordToggleEnabled="false"
+            >
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nomMadre"
+                android:id="@+id/etnommadre"
+                android:inputType="textEmailAddress"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAgregarAnimal"
+            android:background="@color/chocolate"
+            android:text="@string/agregar"
+        />
+</LinearLayout>
