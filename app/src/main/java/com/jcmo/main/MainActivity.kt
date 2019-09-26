@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.widget.TextView
+import androidx.core.app.NavUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -27,7 +28,8 @@ var bool: Boolean = false
 
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,comunicador {
+
 
     //Bottom
     private lateinit var textMessage: TextView
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         animal.add(Animal("vaca","123",R.drawable.perfil,"100Kg","5","Macho","AAA","BBB"))
         when (item.itemId) {
             R.id.navigation_home -> {
+
                 val datosRecibidos = intent.extras
                 //bool = datosRecibidos?.getBoolean("vis")!!
                 emailM = datosRecibidos?.getString("correo").toString()
@@ -52,11 +55,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val homeFragment = HomeFragment()
                 val bundle = Bundle()
                 bundle.putString("Emaila", emailM)
+                //transaction.replace(R.id.contenedor, homeFragment).addToBackStack(null).commit()
                 transaction.replace(R.id.contenedor, homeFragment).commit()
-
+                //transaction.addToBackStack(null)
                 //textMessage.setText(emailM)
                 //textMessage.setText(R.string.title_home)
                 //message2.text = textMessage.toString()
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
@@ -64,6 +69,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val bundle = Bundle()
                 bundle.putParcelableArrayList("animal", ArrayList<Animal>(animal))
                 bundle.putBoolean("visi",bool)
+                //transaction.replace(R.id.contenedor, animalesFragment).addToBackStack("tag").commit()
+                //transaction.replace(R.id.contenedor, animalesFragment).commit()
                 transaction.replace(R.id.contenedor, animalesFragment).commit()
                 //textMessage.setText(emailM)
                 //textMessage.setText(R.string.title_dashboard)
@@ -121,9 +128,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
-        val agregarFragment = HomeFragment()
+        val homeFragment = HomeFragment()
         //textMessage = findViewById(R.id.message2)
-        transaction.replace(R.id.contenedor, agregarFragment).commit()
+        transaction.replace(R.id.contenedor, homeFragment).commit()
         navViewB.setOnNavigationItemSelectedListener(onNavigationItemSelectedListenerB)
 
 
@@ -138,6 +145,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
+
             this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
@@ -192,14 +200,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
        emailM = datosRecibidos?.getString("correo").toString()
        passM =  datosRecibidos?.getString("pass").toString()
         trabajador.add(Trabajador("Jose Ramirez","Administrador",R.drawable.perfil))
+        if(imageViewperfil != null) {
+            imageViewperfil.setImageResource(R.drawable.perfil)
+        }
 
-        imageViewperfil.setImageResource(R.drawable.perfil)
 
         if(emailM != null) {
             textViewcorreo.text = emailM
         }
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
+
       // message2.text = emailM
 
         when (item.itemId) {
@@ -227,14 +238,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 intent.putExtra("trabajador", ArrayList<Trabajador>(trabajador))
                 intent = Intent(this,TrabajadoresActivity::class.java)
                 startActivity(intent)
-                finish()
+                //finish()
 
                 //message2.text = "Trabajdores"
             }
             R.id.nav_tools -> {
                 intent = Intent(this,PerfilActivity::class.java)
                 startActivity(intent)
-                finish()
+                //finish()
                 //message2.text = "Perfil"
             }
             R.id.nav_share -> {
@@ -248,7 +259,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 intent.putExtra("correo",emailM)
                 intent.putExtra("pass",passM)
                 startActivity(intent)
-                finish()
+                //finish()
                // message2.text = "Enviar"
             }
         }
@@ -257,4 +268,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
     ////Navigation Drawer
+
+
+    override fun cambiarfragevent(boolean: Boolean) {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        if(boolean == true){
+            val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
+            navViewB.selectedItemId = R.id.navigation_eventos
+            val eventosFragment = EventosFragment()
+            transaction.replace(R.id.contenedor, eventosFragment).commit()
+        }
+    }
+
 }

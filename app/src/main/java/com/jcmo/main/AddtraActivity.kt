@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_addtra.*
 import kotlinx.android.synthetic.main.activity_registro.*
+import kotlinx.android.synthetic.main.activity_trabajadores.*
 
 class AddtraActivity : AppCompatActivity() {
 

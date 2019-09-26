@@ -22,11 +22,14 @@ class TrabajadoresActivity : AppCompatActivity() {
         setContentView(R.layout.activity_trabajadores)
         setSupportActionBar(toolbar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //actionBar?.setDisplayHomeAsUpEnabled(true)
+
         val datosRecibidos = intent.extras
         //var trabajador = datosRecibidos?.getParcelableArrayList<Trabajador>("trabajador")
         //var trabajador = datosRecibidos?.getParcelableArrayList<Trabajador>("trabajador")
 
-//        trabajador = datosRecibidos?.getParcelableArrayList<Trabajador>("trabajador")!!
+        // trabajador = datosRecibidos?.getParcelableArrayList<Trabajador>("trabajador")!!
         //trabajador?.toMutableList()
         trabajador.toMutableList()
         trabajador.add(Trabajador("Jose Ramirez","Administrador",R.drawable.perfil))
@@ -58,9 +61,9 @@ class TrabajadoresActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        intent = Intent(this,MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        //intent = Intent(this,MainActivity::class.java)
+        //startActivity(intent)
+        //finish()
         super.onBackPressed()
     }
 

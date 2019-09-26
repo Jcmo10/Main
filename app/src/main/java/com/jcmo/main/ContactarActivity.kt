@@ -15,9 +15,9 @@ class ContactarActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        intent = Intent(this,MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        //intent = Intent(this,MainActivity::class.java)
+        //startActivity(intent)
+        //finish()
         super.onBackPressed()
     }
 }
