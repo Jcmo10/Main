@@ -4,24 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
-    var email : String? = null
-    var pass : String?  = null
+    private var email : String? = null
+    private var pass : String?  = null
     private var esVisible: Boolean? = null
 
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -32,24 +24,19 @@ class LoginActivity : AppCompatActivity() {
 
         val etcorreo = findViewById<EditText>(R.id.etEmaill)
         val etpass = findViewById<EditText>(R.id.etPassl)
-//        val etpass2 = findViewById<EditText>(R.id.etPassl2)
-
+        //val etpass2 = findViewById<EditText>(R.id.etPassl2)
 
         email = intent.extras?.getString("correo").toString()
         pass = intent.extras?.getString("pass").toString()
 
         btnLogin.setOnClickListener {
-
-            //login()
             var valid : Boolean = false
             var valid2 : Boolean = false
-
-            var emaill = etcorreo.text.toString()
-            var passl = etpass.text.toString()
+            val emaill = etcorreo.text.toString()
+            val passl = etpass.text.toString()
 
             if(emaill.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emaill).matches() ){
                 etEmaill2.error = "Ingrese un Email Valido"
-
             }else{
                 etEmaill2.error = null
                 valid = true
@@ -59,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
                 etPassl2.error = "Entre 6 y 10 Carateres"
 
             }else{
-
                 etPassl2.error = null
                 valid2 = true
             }
@@ -78,10 +64,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         tvsignup.setOnClickListener{
-            var intent = Intent(this,RegistroActivity::class.java)
+            val intent = Intent(this,RegistroActivity::class.java)
             startActivityForResult(intent,1234) //llama una actividad
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

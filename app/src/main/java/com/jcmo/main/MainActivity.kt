@@ -2,21 +2,16 @@ package com.jcmo.main
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.Menu
 import android.view.MenuItem
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.view.Menu
-import android.widget.TextView
-import androidx.core.app.NavUtils
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 
@@ -25,7 +20,7 @@ private var passM: String? = null
 var trabajador : MutableList<Trabajador> = ArrayList()
 var animal : MutableList<Animal> = ArrayList()
 var bool: Boolean = false
-
+var boolean2: Boolean = false
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,comunicador {
@@ -47,7 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         animal.add(Animal("vaca","123",R.drawable.perfil,"100Kg","5","Macho","AAA","BBB"))
         when (item.itemId) {
             R.id.navigation_home -> {
-
+                boolean2 = false
                 val datosRecibidos = intent.extras
                 //bool = datosRecibidos?.getBoolean("vis")!!
                 emailM = datosRecibidos?.getString("correo").toString()
@@ -196,7 +191,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     ////Navigation Drawer
    override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-       var datosRecibidos = intent.extras
+       val datosRecibidos = intent.extras
        emailM = datosRecibidos?.getString("correo").toString()
        passM =  datosRecibidos?.getString("pass").toString()
         trabajador.add(Trabajador("Jose Ramirez","Administrador",R.drawable.perfil))
@@ -273,7 +268,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun cambiarfragevent(boolean: Boolean) {
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
-        if(boolean == true){
+        boolean2 = boolean
+
+        if(boolean2){
             val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
             navViewB.selectedItemId = R.id.navigation_eventos
             val eventosFragment = EventosFragment()

@@ -1,14 +1,11 @@
 package com.jcmo.main
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_addtra.*
-import kotlinx.android.synthetic.main.activity_registro.*
-import kotlinx.android.synthetic.main.activity_trabajadores.*
 
 class AddtraActivity : AppCompatActivity() {
 

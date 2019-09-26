@@ -2,15 +2,13 @@ package com.jcmo.main
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_addanim.*
-import kotlinx.android.synthetic.main.activity_registro.*
+
 
 class AddanimActivity : AppCompatActivity() {
 
