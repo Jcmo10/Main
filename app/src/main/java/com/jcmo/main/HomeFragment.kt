@@ -20,12 +20,13 @@ class HomeFragment : Fragment(){
         val context: Context
 
 
-        root.tinfo.text = arguments?.getString("Emaila")+"\nas\ndf"
+        root.tinfo.text = arguments?.getString("Emaila")+"\nas\ndfasdasdasd"
 
         root.tAñAnimal.setOnClickListener{
-            val animalesFragment = AnimalesFragment()
+            /*val animalesFragment = AnimalesFragment()
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.contenedor,animalesFragment)?.addToBackStack(null)?.commit()
+                ?.replace(R.id.contenedor,animalesFragment)?.addToBackStack(null)?.commit()*/
+            interfaz?.cambiarfraganimal(true)
         }
 
         root.tAñTrabajador.setOnClickListener {

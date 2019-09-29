@@ -9,7 +9,7 @@
 
         tools:context=".SplashActivity">
 
-    <!--Your comment android:background="@color/lightseagreen"-->
+
 
     <ImageView
             android:id="@+id/imageView"

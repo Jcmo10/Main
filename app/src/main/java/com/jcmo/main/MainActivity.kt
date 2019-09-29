@@ -1,10 +1,12 @@
 package com.jcmo.main
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,9 +23,11 @@ var trabajador : MutableList<Trabajador> = ArrayList()
 var animal : MutableList<Animal> = ArrayList()
 var bool: Boolean = false
 var boolean2: Boolean = false
+var boolean3: Boolean = false
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,comunicador {
+
 
 
     //Bottom
@@ -171,11 +175,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId){
             R.id.action_settings -> {
-                intent = Intent(this,LoginActivity::class.java)
-                intent.putExtra("correo",emailM)
-                intent.putExtra("pass",passM)
-                startActivity(intent)
-                finish()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("CONFIRMAR")
+                builder.setMessage("¿Estas seguro que quieres cerrar sesion? \n")
+
+                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                    Toast.makeText(this,"Sesion Cerrada", Toast.LENGTH_SHORT).show()
+                    intent = Intent(this,LoginActivity::class.java)
+                    intent.putExtra("correo",emailM)
+                    intent.putExtra("pass",passM)
+                    startActivity(intent)
+                    finish()
+                }
+                builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                    Toast.makeText(this,"Cancelado", Toast.LENGTH_SHORT).show()
+
+                }
+                builder.show()
             }
 
         }
@@ -250,11 +266,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 //message2.text = "Contactenos"
             }
             R.id.nav_send -> {
-                intent = Intent(this,LoginActivity::class.java)
-                intent.putExtra("correo",emailM)
-                intent.putExtra("pass",passM)
-                startActivity(intent)
-                //finish()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("CONFIRMAR")
+               builder.setMessage("¿Estas seguro que quieres cerrar sesion? \n")
+
+                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                    Toast.makeText(this,"Sesion Cerrada", Toast.LENGTH_SHORT).show()
+                    intent = Intent(this,LoginActivity::class.java)
+                    intent.putExtra("correo",emailM)
+                    intent.putExtra("pass",passM)
+                    startActivity(intent)
+                    finish()
+
+
+                }
+                builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                    Toast.makeText(this,"Cancelado", Toast.LENGTH_SHORT).show()
+
+
+                }
+                builder.show()
+
                // message2.text = "Enviar"
             }
         }
@@ -275,6 +307,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navViewB.selectedItemId = R.id.navigation_eventos
             val eventosFragment = EventosFragment()
             transaction.replace(R.id.contenedor, eventosFragment).commit()
+        }
+    }
+
+    override fun cambiarfraganimal(boolean: Boolean) {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        boolean3 = boolean
+
+        if(boolean3){
+            val navViewB: BottomNavigationView = findViewById(R.id.nav_viewB)
+            navViewB.selectedItemId = R.id.navigation_dashboard
+            val animalesFragment = AnimalesFragment()
+            transaction.replace(R.id.contenedor, animalesFragment).commit()
         }
     }
 
