@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_addanim.*
 
 
@@ -114,6 +115,36 @@ class AddanimActivity : AppCompatActivity() {
                 intent.putExtra("foto",R.id.ivAnimal)
                 intent.putExtra("sexo",radioButton.text)
                 intent.putExtra("vis",true)
+                /*radioButton.setOnClickListener {
+                    var fff = radioGroup.checkedRadioButtonId
+                    if (fff==R.id.radio_masculino){
+                        Toast.makeText(this,"Macho",Toast.LENGTH_SHORT).show()
+                    }
+                    if(fff==R.id.radio_femenino){
+                        Toast.makeText(this,"Hembra",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                radioGroup.setOnCheckedChangeListener { radioGroup, i ->
+                    var fff = radioGroup.checkedRadioButtonId
+                    if (i==R.id.radio_masculino){
+                        Toast.makeText(this,"Macho",Toast.LENGTH_SHORT).show()
+                    }
+                    if(i==R.id.radio_femenino){
+                        Toast.makeText(this,"Hembra",Toast.LENGTH_SHORT).show()
+                    }
+                }*/
+                var aa :String
+                var fff = radioGroup.checkedRadioButtonId
+                if (fff==R.id.radio_masculino){
+                    aa = "Macho"
+                    Toast.makeText(this,aa,Toast.LENGTH_SHORT).show()
+                }
+                if(fff==R.id.radio_femenino){
+                    aa = "Hembra"
+                    Toast.makeText(this,aa,Toast.LENGTH_SHORT).show()
+                }
+
+
                 //intent = Intent(this,MainActivity::class.java)
                 //startActivity(intent)
                 setResult(Activity.RESULT_OK, intent)//llama actividad

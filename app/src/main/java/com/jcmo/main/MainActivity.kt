@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val transaction = manager.beginTransaction()
         val homeFragment = HomeFragment()
         //textMessage = findViewById(R.id.message2)
-        transaction.replace(R.id.contenedor, homeFragment).commit()
+        transaction.replace(R.id.contenedor, homeFragment).addToBackStack("tag").commit()
         navViewB.setOnNavigationItemSelectedListener(onNavigationItemSelectedListenerB)
 
 

@@ -60,6 +60,7 @@
     <string name="title_activity_Perfil">Perfil</string>
     <string name="title_activity_addanimal">Añadir Animal</string>
     <string name="title_activity_addtrabajador">Añadir Trabajador</string>
+    <string name="Guardar">Guardar</string>
 
 
 </resources>
